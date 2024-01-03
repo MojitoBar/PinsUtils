@@ -10,7 +10,7 @@ import OSLog
 import CryptoKit
 
 public enum DiskCacheManager {
-    static func cacheImage(_ image: UIImage, withFilename filename: String) {
+    public static func cacheImage(_ image: UIImage, withFilename filename: String) {
         let hash = CryptoUtils.sha256(filename)
         if let data = image.jpegData(compressionQuality: 0.7) ?? image.pngData() {
             let fileManager = FileManager.default
