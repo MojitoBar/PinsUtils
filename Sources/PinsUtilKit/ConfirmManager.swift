@@ -6,8 +6,8 @@
 //
 
 import UIKit
-enum ConfirmManager {
-    static func makeAlert(title: String, message: String, action: @escaping () -> Void) -> UIAlertController {
+public enum ConfirmManager {
+    public static func makeAlert(title: String, message: String, action: @escaping () -> Void) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let confirmAction = UIAlertAction(title: "확인", style: .default) { _ in
             action()

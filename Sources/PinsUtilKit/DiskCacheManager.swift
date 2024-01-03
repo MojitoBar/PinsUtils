@@ -9,7 +9,7 @@ import UIKit
 import OSLog
 import CryptoKit
 
-enum DiskCacheManager {
+public enum DiskCacheManager {
     static func cacheImage(_ image: UIImage, withFilename filename: String) {
         let hash = CryptoUtils.sha256(filename)
         if let data = image.jpegData(compressionQuality: 0.7) ?? image.pngData() {
@@ -20,7 +20,7 @@ enum DiskCacheManager {
             }
         }
     }
-    static func retrieveCachedImage(withFilename filename: String) -> UIImage? {
+    public static func retrieveCachedImage(withFilename filename: String) -> UIImage? {
         let hash = CryptoUtils.sha256(filename)
         let fileManager = FileManager.default
         if let cacheDirectory = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first {
@@ -31,7 +31,7 @@ enum DiskCacheManager {
         }
         return nil
     }
-    static func clearCache() {
+    public static func clearCache() {
         let fileManager = FileManager.default
         if let cacheDirectory = fileManager.urls(for: .cachesDirectory, in: .userDomainMask).first {
             do {
@@ -44,7 +44,7 @@ enum DiskCacheManager {
             }
         }
     }
-    static func calculateCacheSize() -> Int {
+    public static func calculateCacheSize() -> Int {
         let fileManager = FileManager.default
         var totalSize: Int = 0
 
@@ -63,7 +63,7 @@ enum DiskCacheManager {
         }
         return totalSize
     }
-    static func formatBytes(_ bytes: Int) -> String {
+    public static func formatBytes(_ bytes: Int) -> String {
         let formatter = ByteCountFormatter()
         formatter.allowedUnits = [.useMB, .useGB]
         formatter.countStyle = .file
